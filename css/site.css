@@ -133,7 +133,7 @@ background: #DBE6F6;
 /* fallback for old browsers */
 background: -webkit-linear-gradient(to right, #C5796D, #DBE6F6);
 /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #C5796D, #DBE6F6);
+background: linear-gradient(to left, #C5796D, #DBE6F6);
 /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
@@ -147,9 +147,25 @@ background: #DBE6F6;
 /* fallback for old browsers */
 background: -webkit-linear-gradient(to right, #C5796D, #DBE6F6);
 /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #C5796D, #DBE6F6);
+background: linear-gradient(to left, #C5796D, #DBE6F6);
 /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
+
+a {
+color:black;
+}
+
+a:hover {
+color:grey;
+font-weight:bold;
+}
+
+li.nav-item.active a.nav-link{
+color:grey;
+font-weight:bold;
+}
+
+
 
 #MainTop-BG {
   margin-bottom: 1em;

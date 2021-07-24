@@ -4,6 +4,7 @@
 <!--
   TODO: Change Title
 -->
+
 <head>
   <title>TacoCat</title>
   <!-- Required meta tags -->
@@ -15,24 +16,26 @@
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <!-- Custom CSS -->
   <link rel="stylesheet" href="/css/site.css">
-<!-- Prism -->
-<link rel="stylesheet" href="/css/prismOkaidia.css">
-<!-- Google Fonts -->
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Courgette&family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/enlighterjs.min.css">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Courgette&family=M+PLUS+Rounded+1c&display=swap"
+    rel="stylesheet">
 
 </head>
 
 <body>
   <header>
     <!-- Fixed navbar -->
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark" id="NavBar-BG">
+    <nav class="navbar navbar-expand-md fixed-top" id="NavBar-BG">
       <!--
         TODO: Change Header name
       -->
-      <a class="navbar-brand" href="#">TacoCat</a>
+      <a class="navbar-brand" href="index.html">TacoCat</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
         aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -61,42 +64,53 @@
   -->
   <!-- Begin page content -->
   <main role="main" class="container" id="MainTop-BG">
-        <div class="row">
-          <div class="col">
-            <pre class="line-numbers"><code class="language-javascript">
-  function reverseString(){
-  let userWord = document.getElementById("tacoCat").value;
-  let filteredWord = userWord.replace(/[\W_]/g, '').toLowerCase();
-  let index = filteredWord.length - 1;
-  let reverseWord = "";
-  for (i = index; i >= 0; i--) {
-  reverseWord += filteredWord[i];
-  }
-  if(reverseWord == filteredWord){
-  let palindrome = document.getElementById("palindrome");
-  palindrome.innerText = "True";
-  }
-  else{
-  palindrome.innerText = "False";
-  }
-  let output = document.getElementById("tacoOutput");
-  output.innerText = reverseWord;
-  }</code></pre>
-          </div>
-          <hr>
-
-
-
-          <div class="col-3 col-md-3 col-lg-3"><img class="container-fluid" src="/img/js.png" /></div>
-        </div>
-      <div class="col-3 col-md-3 col-lg-3"></div>
-      <div class="col-3 col-md-3 col-lg-3"></div>
-    </div>
-
     <div class="row">
-      <div class="col-4 col-md-4 col-lg-4"></div>
-      <div class="col-4 col-md-4 col-lg-4"></div>
-      <div class="col-4 col-md-4 col-lg-4"></div>
+      <div class="col-9">
+        <p>This function used to reverse a string and see if it matches the original word pattern.</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <pre>function reverseString() {
+    let userWord = document.getElementById("tacoCat").value;
+    let filteredWord = userWord.replace(/[\W_]/g, '').toLowerCase();
+    let index = filteredWord.length - 1;
+    let reversedWord = "";
+    for (i = index; i >= 0; i--) {
+        reversedWord += filteredWord[i];
+    }
+    displayData(filteredWord, reversedWord);
+}   
+</pre>
+      </div>
+      <div class="col-3 col-md-3 col-lg-3"><img class="container-fluid" src="/img/js.png" /></div>
+    </div>
+    </div>
+    <div class="row">
+      <div class="col-9">
+        <p> This function updates the page with the results of our test. </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <pre>function displayData(originalWord, reversedWord){
+    if (reversedWord == originalWord) {
+        if (reversedWord == "") {
+            let palindrome = document.getElementById("palindrome");
+            palindrome.innerText = "Please Enter a Word";
+        } else {
+            let palindrome = document.getElementById("palindrome");
+            palindrome.innerText = "True";
+        }
+    } else {
+        palindrome.innerText = "False";
+    }
+    let output = document.getElementById("tacoOutput");
+    output.innerText = reversedWord;
+}  
+</pre>
+      </div>
+    </div>
     </div>
   </main>
 
@@ -105,7 +119,7 @@
   -->
   <footer class="footer" id="Footer-BG">
     <div class="container">
-      <span class="text-md-center">&copy; John Murphy 2021</span>
+      <span class="text-md-center text-dark">&copy; John Murphy 2021</span>
     </div>
   </footer>
 
@@ -123,8 +137,20 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
   </script>
-    <!-- Prism -->
-    <script src="/js/prismOkaidia.js"></script>
+
+  <script src="/js/enlighterjs.min.js"></script>
+  <script>
+    // INIT CODE - simple page-wide initialization based on css selectors
+    // - highlight all pre + code tags (CSS3 selectors)
+    // - use javascript as default language
+    // - use theme "enlighter" as default theme
+    // - replace tabs with 2 spaces
+    EnlighterJS.init('pre', 'code', {
+      language: 'javascript',
+      theme: 'enlighter',
+      indent: 2
+    });
+  </script>
 </body>
 
 </html>
