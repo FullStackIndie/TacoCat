@@ -1,28 +1,37 @@
-
-
 name: Build from Github, Deploy to Linux
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
- continuous-integration:
+  continuous-integration:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Copying files to server
-      uses: appleboy/scp-action@v0.1.2
-      with:
-        host: ${{ secrets.REMOTE_HOST }}
-        username:  ${{ secrets.USERNAME }}
-        password: ${{ secrets.PASSWORD }}
-        port: ${{ secrets.REMOTE_PORT }}
-        rm: true
-        source: "/home/runner/work/TacoCat/TacoCat/"
-        target: "${{ secrets.REMOTE_DIR }}"
-
-
+      - uses: actions/checkout@v2
+      - name: Copying files to server
+        uses: appleboy/scp-action@v0.1.2
+        with:
+          host: ${{ secrets.REMOTE_HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          passphrase: ${{ secrets.PASSPHRASE }}
+          port: ${{ secrets.REMOTE_PORT }}
+          rm: true
+          source: "/home/runner/work/TacoCat/TacoCat"
+          target: "${{ secrets.REMOTE_DIR }}"
+          
+      - name: executing remote ssh commands using password
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.REMOTE_HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          passphrase: ${{ secrets.PASSPHRASE }}
+          port: ${{ secrets.REMOTE_PORT }}
+          script: |
+            cp -r /var/www/tacocat/github/workspace/* /var/www/tacocat
+            rm -r /var/www/tacocat/github
 
 
 # name: Build from Github, Deploy to AWS EC2
