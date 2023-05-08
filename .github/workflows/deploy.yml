@@ -16,7 +16,7 @@ jobs:
       folder_path: /var/www/html/js_challenges
       owner_name: FullStackIndie
       repo_name: TacoCat
-      source_folder: ./TacoCat
+      source_folder: ./
       dest_folder: TacoCat
     secrets:
       SERVER_SSH_HOST: ${{ secrets.SERVER_SSH_HOST }}
