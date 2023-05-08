@@ -17,7 +17,7 @@ jobs:
       owner_name: FullStackIndie
       repo_name: TacoCat
       source_folder: ./TacoCat
-      dest_folder: /TacoCat
+      dest_folder: TacoCat
     secrets:
       SERVER_SSH_HOST: ${{ secrets.SERVER_SSH_HOST }}
       SERVER_SSH_USERNAME: ${{ secrets.SERVER_SSH_USERNAME }}
