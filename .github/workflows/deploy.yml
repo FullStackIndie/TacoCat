@@ -11,7 +11,7 @@ on:
 
 jobs:
   upload-resetcache-publish:
-    uses: FullStackIndie/Reusable-Workflows/.github/workflows/Update deploy_static_website_s3_&_cloudfront_invalidation.yml@main
+    uses: FullStackIndie/Reusable-Workflows/.github/workflows/Update_deploy_static_website_s3_&_cloudfront_invalidation.yml@main
     with:
       folder_path: /var/www/html/js_challenges
       owner_name: FullStackIndie
